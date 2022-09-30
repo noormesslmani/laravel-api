@@ -85,4 +85,22 @@ class TestController extends Controller
             'result'=>$newstr
         ]);
     }
+    function calculate($exp){
+        $equationarr= (explode(" ",$exp));
+        if ($equationarr[0]=='+'){
+            $solution= intval($equationarr[1])+intval($equationarr[2]);
+        }
+        else if ($equationarr[0]=='-'){
+            $solution= intval($equationarr[1])-intval($equationarr[2]);
+        }
+        else if ($equationarr[0]=='*'){
+            $solution= intval($equationarr[1])*intval($equationarr[2]);
+        }
+        else if ($equationarr[0]=='÷'){
+            $solution= intval($equationarr[1])/intval($equationarr[2]);
+        }
+        return response()->json([
+            'result'=>$solution
+        ]);
+    }
 }
