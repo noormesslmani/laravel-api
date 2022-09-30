@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix'=>'tes'],function(){
     Route::get('/sort/{string}',[controller1::class,'sortString']);
+    Route::get('/place/{num}',[controller1::class,'placeValue']);
 }
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

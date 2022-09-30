@@ -39,4 +39,23 @@ class TestController extends Controller
             'result'=>$string
         ]);
     }
+
+    function placeValue($num){
+        $negative=false;
+        if ($num<0){
+            $negative=true;
+            $num=$num*(-1);
+        }
+        $numarr=str_split($num);
+        for ($i=0;$i<count($numarr);$i++){
+            $numarr[$i]=$numarr[$i]*(10**(count($numarr)-1-$i));
+            if($negative){
+                $numarr[$i]=$numarr[$i]*(-1);
+            }
+        }
+
+        return response()->json([
+            'result'=>$numarr
+        ]);
+    }
 }
