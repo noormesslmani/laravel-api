@@ -42,6 +42,7 @@ class TestController extends Controller
         $result=array_merge($chararr, $intarr);
         $string= implode($result);
         return response()->json([
+            'status'=>'success',
             'result'=>$string
         ]);
     }
@@ -63,6 +64,7 @@ class TestController extends Controller
             }
         }
         return response()->json([
+            'status'=>'success',
             'result'=>$numarr
         ]);
     }
@@ -93,6 +95,7 @@ class TestController extends Controller
             $i++;
         }
         return response()->json([
+            'status'=>'success',
             'result'=>$newstr
         ]);
     }
@@ -126,6 +129,7 @@ class TestController extends Controller
             }  
         }
         return response()->json([
+            'status'=>'success',
             'result'=>$calculate[0]
         ]);
     }
