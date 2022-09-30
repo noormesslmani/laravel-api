@@ -87,20 +87,29 @@ class TestController extends Controller
     }
     function calculate($exp){
         $equationarr= (explode(" ",$exp));
-        if ($equationarr[0]=='+'){
-            $solution= intval($equationarr[1])+intval($equationarr[2]);
+        $calculate=[];
+        while(count($equationarr)>0){
+            $x=array_pop($equationarr);
+            if($x=='+'){
+                $ans=intval(array_pop($calculate))+intval(array_pop($calculate));
+                array_push($calculate,$ans);
+            }
+            else if($x=='-'){
+                $ans=intval(array_pop($calculate))-intval(array_pop($calculate));
+                array_push($calculate,$ans);
+            }
+            else if($x=='*'){
+                $ans=intval(array_pop($calculate))*intval(array_pop($calculate));
+                array_push($calculate,$ans);
+            }
+            else if($x=='÷'){
+                $ans=intval(array_pop($calculate))/intval(array_pop($calculate));
+                array_push($calculate,$ans);
+            }
+            else{
+                array_push($calculate,$x);
+            }  
         }
-        else if ($equationarr[0]=='-'){
-            $solution= intval($equationarr[1])-intval($equationarr[2]);
-        }
-        else if ($equationarr[0]=='*'){
-            $solution= intval($equationarr[1])*intval($equationarr[2]);
-        }
-        else if ($equationarr[0]=='÷'){
-            $solution= intval($equationarr[1])/intval($equationarr[2]);
-        }
-        return response()->json([
-            'result'=>$solution
-        ]);
+        print_r($calculate);
     }
 }
