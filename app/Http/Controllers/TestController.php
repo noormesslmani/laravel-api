@@ -125,6 +125,8 @@ class TestController extends Controller
                 array_push($calculate,$x);
             }  
         }
-        print_r($calculate);
+        return response()->json([
+            'result'=>$calculate[0]
+        ]);
     }
 }
