@@ -58,4 +58,31 @@ class TestController extends Controller
             'result'=>$numarr
         ]);
     }
+
+    function toBinary($str){
+        $arr=str_split($str);
+        $newstr='';
+        $i=0;
+        while($i<count($arr)){
+            $number='';
+            if(!($arr[$i]<='9' && $arr[$i]>='0')){
+                $newstr.=$arr[$i];
+            }
+            else{
+                for($j=$i;$j<count($arr);$j++){
+                    if(!($str[$j]<='9' && $str[$j]>='0')){
+                        $i=$j-1;
+                        break; 
+                    }
+                    $number.=$arr[$j];
+                }
+                $number= decbin(intval($number));
+                $newstr.=$number;
+            }
+            $i++;
+        }
+        return response()->json([
+            'result'=>$newstr
+        ]);
+    }
 }
